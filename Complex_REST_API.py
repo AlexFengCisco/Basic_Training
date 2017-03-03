@@ -61,5 +61,9 @@ Your HTTP Method is %s
             print len(content_len)
             print type(content_len)
             payload=request[len(request)-int(content_len):len(request)]
+            print "--------Request content all ----------"
+            print request
+            print "--------Paylaod parsed here  ---------"
             print payload
+            print "--------------------------------------"
     client_connection.close()
