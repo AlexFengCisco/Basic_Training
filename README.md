@@ -1,6 +1,6 @@
 #Basic Training 
 
-##Python Data Structure
+##Python OOP demo
 
 ##Python REST
     python build a simple web server
@@ -10,3 +10,4 @@
     
 ##Parse json data
 ##Parse XML data
+##Throw Exception and logging
