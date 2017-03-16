@@ -1,14 +1,14 @@
 '''
 Created on Mar 2, 2017
-
+________+++++++++++_______
 @author: AlexFeng
 '''
 from types import MethodType
 
 #-----a parent class---------------------------------
 class Device(object):
-   
-    def __init__(self,mgt_ip_address,Host_name,):
+    ###mandatory attribute ,self means instance self
+    def __init__(self,mgt_ip_address,Host_name,): 
         self.mgt_ip_address=mgt_ip_address
         self.host_name=Host_name
                
@@ -19,9 +19,12 @@ class Device(object):
         print self.mgt_ip_address
 #-----a child class to demo inheritance-----------------        
 class Switch(Device):
+    """
+    document for class switch  with python docstring
+    """
     def __init__(self,mgt_ip_address,Host_name,switch_mode):
-        
-        Device.__init__(self,mgt_ip_address,Host_name)  #------child class call parent class construction 
+        '''------child class call parent class construction'''
+        Device.__init__(self,mgt_ip_address,Host_name)   
         self.switch_mode=switch_mode
      
     def get_switch_mode(self):
@@ -34,16 +37,20 @@ class Router(Device):
     def get_POS_support(self):
         print self.POS_support
 
-#----------a grand son class to demo polymorphism  --------       
+    
 class V_Router(Router):
+    """
+    A grand son class to demo polymorphism
+    """  
     def __init__(self,mgt_ip_address,Host_name,POS_support):
         Device.__init__(self,mgt_ip_address,Host_name)
         self.POS_support=POS_support
     def get_POS_support(self):
         print "Don't waste time , this is a virtual Router"
 
-#------------------add a method to class Router , not for a real instance
+
 def set_loop_back(self,loop_back_address):
+    '''Add a method to class Router , not for a real instance'''
     self.loop_back_address=loop_back_address
     
 Device.set_loop_back=MethodType(set_loop_back,None,Device)
@@ -70,6 +77,7 @@ print dir(SW1)
 print dir(R2)
 print SW1.host_name
 print SW1.__doc__
+print V_Router.__doc__
 
 SW1.set_loop_back('1.1.1.1')
 print SW1.loop_back_address
@@ -77,3 +85,5 @@ print SW1.loop_back_address
 print isinstance(R1,Router) 
 print issubclass(Router, Device)
 print isinstance(Router,Device) 
+
+#    !!!!  python -m pydoc Simple_OOP_class_method_instance
